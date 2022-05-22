@@ -4,6 +4,7 @@
         "front-install": "cd udagram/udagram-frontend && npm install",
         "back-build": "cd udagram/udagram-api && npm run build",
         "front-build": "cd udagram/udagram-frontend && npm run build",
+        "fe-test": "cd udagram/udagram-frontend && npm run test",
         "back-deploy": "cd udagram/udagram-api && eb init udagram-api -r $AWS_DEFAULT_REGION -p node.js && eb use udagram-api-prod && eb setenv POSTGRES_HOST=$POSTGRES_HOST DB_PORT=$DB_PORT PORT=$PORT POSTGRES_PASSWORD=$POSTGRES_PASSWORD POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_DB=$POSTGRES_DB AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY JWT_SECRET=$JWT_SECRET && eb deploy",
         "front-deploy": "aws s3 cp --recursive --acl public-read udagram/udagram-frontend/www s3://aboshama-bucket"
     },
