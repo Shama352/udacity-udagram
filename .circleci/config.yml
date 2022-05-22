@@ -10,28 +10,34 @@ jobs:
   CICD:
     docker:
       - image: "cimg/base:stable"
+    #These are steps for CICD
     steps:
         - node/install
         - checkout
         - eb/setup
         - aws-cli/install
         - aws-cli/setup
-
+        #Installing Frontend node modules
         - run:
             name: Install Frontend node_modules
             command: npm run front-install
+        #Installing Backend node modules
         - run:
             name: Install Backend node_modules
             command: npm run back-install
+        #Building Frontend     
         - run:
             name: Frontend build
             command: npm run front-build
+        #Building Backend    
         - run:
             name: Backend build
             command: npm run back-build
+        #Deploying Backend       
         - run:
             name: Backend deploy
             command: npm run back-deploy
+        #Deploying Frontend        
         - run:
             name: Frontend deploy
             command: npm run front-deploy
